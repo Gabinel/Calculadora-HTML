@@ -1,0 +1,77 @@
+body{
+    margin: 0px;
+    padding: 0px;
+}
+.fundo{
+    background-image: linear-gradient(45deg, rgb(245, 201, 165), rgb(163, 79, 10));
+    height: 100vh;
+    color: #fff;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.calculadora{
+    /**Posição absoluta remove o fluxo normal de objetos - FIXOS - e podem sobrepôr outros elementos**/
+    position: absolute;
+    background-color: rgb(48, 28, 0);
+    top: 50%;
+    left: 50%;
+    /**Muda a origem do objeto para o centro, em vez do vértice**/
+    transform: translate(-50%, -50%);
+    /**Arredonda as bordas**/
+    border-radius: 15px;
+    /**Distância dos elementos da borda**/
+    padding: 15px;
+    text-align: center;
+}
+.botaoBaixo{
+    width: 40px;
+    height: 40px;
+    /**Muda o cursor quando passa no botão**/
+    cursor: pointer;
+    /**Tira a borda**/
+    border: none;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.botaoAlto{
+    padding: 1px;
+    width: 40px;
+    height: 25px;  
+    font-size: smaller;
+    /**Muda o cursor quando passa no botão**/
+    cursor: pointer;
+    /**Tira a borda**/
+    border: none;
+    border-radius: 15px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.botaoIgual{
+    width: 40px;
+    height: 40px;
+    /**Muda o cursor quando passa no botão**/
+    cursor: pointer;
+    /**Tira a borda**/
+    border: none;
+    width: 84px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+ /**Animação ao passar o mouse em cima do botão**/
+.botaoAlto:hover{
+    background-color: #c1c0c0;
+}
+.botaoBaixo:hover{
+    background-color: #c1c0c0;
+}
+.botaoIgual:hover{
+    background-color: #c1c0c0;
+}
+
+#iResult{
+    background-color: white;
+    margin: 3px;
+    width: 171px;
+    height: 30px;
+    font-size: 25px;
+    color: black;
+    text-align: right;
+    padding: 1px;
+}

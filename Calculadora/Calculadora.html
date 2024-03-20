@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <link rel="stylesheet" href="style.css"> <!--link:css - depois disso, criar um arquivo do tipo css de mesmo nome-->
+</head>
+<body>
+    <div class="fundo">
+        <div class="calculadora">
+            <p id="iResult"></p>
+            <!--Cria uma tabela-->
+            <!--tr - cria uma 'row', ou seja, uma linha da tabela-->
+            <!--td - cria uma 'célula de dados' - contém dados (nesse caso são os botões)-->
+            <table>
+                <tr>
+                    <td><button class="botaoAlto" onclick="logarithm()">log</button></td>
+                    <td><button class="botaoAlto" onclick="naturalLog()">ln</button></td>
+                    <td><button class="botaoAlto" onclick="insert('2.71')">e</button></td>
+                    <td><button class="botaoAlto" onclick="insert('3.14')">π</button></td>
+                </tr>
+                <tr>
+                    <td><button class="botaoAlto" onclick="insert('/')">/</button></td>
+                    <td><button class="botaoAlto" onclick="insert('*')">*</button></td>
+                    <td><button class="botaoAlto" onclick="calculate(); exponential()">^2</button></td>
+                    <td><button class="botaoAlto" onclick="calculate(); sqrt()">√</button></td>
+                </tr>
+                <tr>
+                    <td><button class="botaoBaixo" onclick="insert('7')">7</button></td>
+                    <td><button class="botaoBaixo" onclick="insert('8')">8</button></td>
+                    <td><button class="botaoBaixo" onclick="insert('9')">9</button></td>
+                    <td><button class="botaoBaixo" onclick="erase()">C</button></td>
+                </tr>
+                <tr>
+                    <td><button class="botaoBaixo" onclick="insert('4')">4</button></td>
+                    <td><button class="botaoBaixo" onclick="insert('5')">5</button></td>
+                    <td><button class="botaoBaixo" onclick="insert('6')">6</button></td>
+                    <td><button class="botaoBaixo" onclick="insert('-')">-</button></td>
+                </tr>
+                <tr>
+                    <td><button class="botaoBaixo" onclick="insert('3')">3</button></td>
+                    <td><button class="botaoBaixo" onclick="insert('2')">2</button></td>
+                    <td><button class="botaoBaixo" onclick="insert('1')">1</button></td>
+                    <td><button class="botaoBaixo" onclick="insert('+')">+</button></td>
+                </tr>
+                <tr>
+                    <td><button class="botaoBaixo" onclick="insert('0')">0</button></td>
+                    <td><button class="botaoBaixo" onclick="insert('.')">.</button></td>
+                    <td colspan="2"><button class="botaoIgual" onclick="calculate()">=</button></td>
+                </tr>
+            </table>
+        </div>  
+    </div>
+
+    <!--Retorna um elemento com um valor especificado-->
+    <!--.innerHTML seta ou retorna o conteúdo HTML de um elemento-->
+    <!--.toFixed(n) limita um número a 'n' casas decimais-->
+    <!--eval(number) calcula o valor de 'number'-->
+    <script>
+        function insert(number){
+            var number2 = document.getElementById('iResult').innerHTML;
+            document.getElementById('iResult').innerHTML = number2 + number;
+        }
+        function erase(){
+            document.getElementById('iResult').innerHTML = "";
+        }
+        function sqrt(){
+            var squareRoot = document.getElementById('iResult').innerHTML;
+            document.getElementById('iResult').innerHTML = Math.sqrt(squareRoot).toFixed(2);
+        }
+        function exponential(){
+            var expt = document.getElementById('iResult').innerHTML;
+            document.getElementById('iResult').innerHTML = Math.pow(expt, 2).toFixed(2);
+        }
+        function naturalLog(){
+            var ln = document.getElementById('iResult').innerHTML;
+            document.getElementById('iResult').innerHTML = Math.log(ln).toFixed(2);
+        }
+        function logarithm(){
+            var log = document.getElementById('iResult').innerHTML;
+            document.getElementById('iResult').innerHTML = Math.log10(log).toFixed(2)
+        }
+        function calculate(){
+            var result = document.getElementById('iResult').innerHTML;
+
+            if(result){
+                var resultCalc = eval(result);
+                document.getElementById('iResult').innerHTML = resultCalc.toFixed(2);
+            }            
+        }
+    </script>
+</body>
+</html>
