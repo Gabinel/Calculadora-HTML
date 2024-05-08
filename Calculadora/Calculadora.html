@@ -15,6 +15,12 @@
             <!--td - cria uma 'célula de dados' - contém dados (nesse caso são os botões)-->
             <table>
                 <tr>
+                    <td class="botaoSelect"><input type="radio" name="fixo" onclick="set(1)">In</td>
+                    <td class="botaoSelect"><input type="radio" name="fixo" onclick="set(2)">Pos</td>
+                    <td></td>
+                    <td><button class="botaoAlto" onclick="insert(';')">Insert</button></td>
+                </tr>
+                <tr>
                     <td><button class="botaoAlto" onclick="logarithm()">log</button></td>
                     <td><button class="botaoAlto" onclick="naturalLog()">ln</button></td>
                     <td><button class="botaoAlto" onclick="insert('2.71')">e</button></td>
@@ -58,6 +64,9 @@
     <!--.toFixed(n) limita um número a 'n' casas decimais-->
     <!--eval(number) calcula o valor de 'number'-->
     <script>
+        var selection = 1;
+        var operations = ["*","+","-","/","^2","√"];
+
         function insert(number){
             var number2 = document.getElementById('iResult').innerHTML;
             document.getElementById('iResult').innerHTML = number2 + number;
@@ -82,12 +91,29 @@
             document.getElementById('iResult').innerHTML = Math.log10(log).toFixed(2)
         }
         function calculate(){
-            var result = document.getElementById('iResult').innerHTML;
+            var result = document.getElementById('iResult');
+            var numPil = [];
+            var opPil = [];
 
-            if(result){
-                var resultCalc = eval(result);
-                document.getElementById('iResult').innerHTML = resultCalc.toFixed(2);
+            if(selection == 1){
+                var resultCalc = eval(result.innerHTML);
+                result.innerHTML = resultCalc.toFixed(2);
+            } else if(selection == 2) {
+                for(var i = 0; i < result.innerText.length; i++) {
+                    if(result.innerText[i] == ";") {
+                        numPil.push(result.innerText.slice(0,i));
+                    } else {
+                        for(var j = 0; j < operations.length; j++) {
+                            if(result.innerText[i] == operations[j]) {
+                                opPil.push(result.innerText[i]);
+                            }
+                        }
+                    }
+                }
             }            
+        }
+        function set(n) {
+            selection = n;
         }
     </script>
 </body>
